@@ -14,6 +14,9 @@
 
 @implementation ViewController
 
+@synthesize firstName, phoneNumber;
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
