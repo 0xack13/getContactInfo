@@ -21,6 +21,8 @@
 		4C3D79761A501DA200D098C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3D79581A501DA200D098C9 /* UIKit.framework */; };
 		4C3D797E1A501DA200D098C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C3D797C1A501DA200D098C9 /* InfoPlist.strings */; };
 		4C3D79801A501DA200D098C9 /* getContactAddressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D797F1A501DA200D098C9 /* getContactAddressTests.m */; };
+		4C3D798B1A501DC200D098C9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3D79891A501DC200D098C9 /* AddressBook.framework */; };
+		4C3D798C1A501DC200D098C9 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3D798A1A501DC200D098C9 /* AddressBookUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		4C3D797B1A501DA200D098C9 /* getContactAddressTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "getContactAddressTests-Info.plist"; sourceTree = "<group>"; };
 		4C3D797D1A501DA200D098C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C3D797F1A501DA200D098C9 /* getContactAddressTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = getContactAddressTests.m; sourceTree = "<group>"; };
+		4C3D79891A501DC200D098C9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		4C3D798A1A501DC200D098C9 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3D798B1A501DC200D098C9 /* AddressBook.framework in Frameworks */,
+				4C3D798C1A501DC200D098C9 /* AddressBookUI.framework in Frameworks */,
 				4C3D79571A501DA200D098C9 /* CoreGraphics.framework in Frameworks */,
 				4C3D79591A501DA200D098C9 /* UIKit.framework in Frameworks */,
 				4C3D79551A501DA200D098C9 /* Foundation.framework in Frameworks */,
@@ -101,6 +107,8 @@
 		4C3D79531A501DA200D098C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C3D79891A501DC200D098C9 /* AddressBook.framework */,
+				4C3D798A1A501DC200D098C9 /* AddressBookUI.framework */,
 				4C3D79541A501DA200D098C9 /* Foundation.framework */,
 				4C3D79561A501DA200D098C9 /* CoreGraphics.framework */,
 				4C3D79581A501DA200D098C9 /* UIKit.framework */,
