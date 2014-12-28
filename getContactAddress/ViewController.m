@@ -26,4 +26,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)showPicker:(id)sender {
+    NSLog(@"Button clicked!");
+}
+
 @end
