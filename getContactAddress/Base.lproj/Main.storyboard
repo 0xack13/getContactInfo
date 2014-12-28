@@ -43,7 +43,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="firstNAme" destination="eVo-i4-gvH" id="tT4-Kb-xf0"/>
+                        <outlet property="firstName" destination="eVo-i4-gvH" id="81b-bn-w0h"/>
                         <outlet property="phoneNumber" destination="IGc-wn-L2y" id="r2d-bq-8Du"/>
                     </connections>
                 </viewController>
