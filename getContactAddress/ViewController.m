@@ -42,22 +42,58 @@
 
 }
 
-- (void)peoplePickerNavigationControllerDidCancel:
+/* NEW!!
+ - (void)peoplePickerNavigationControllerDidCancel:
 (ABPeoplePickerNavigationController *)peoplePicker
 {
-    [self dismissModalViewControllerAnimated:YES];
-}
+    //[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:peoplePicker completion:nil];
 
+}*/
 
+/* NEW
 - (BOOL)peoplePickerNavigationController:
 (ABPeoplePickerNavigationController *)peoplePicker
       shouldContinueAfterSelectingPerson:(ABRecordRef)person {
     
     [self displayPerson:person];
-    [self dismissModalViewControllerAnimated:YES];
+    //[//self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:peoplePicker completion:nil];
+
+    return NO;
+}*/
+
+
+
+- (void)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker didSelectPerson:(ABRecordRef)person
+{
     
+    ABMultiValueRef phone = (ABMultiValueRef) ABRecordCopyValue(person, kABPersonPhoneProperty);
+    CFStringRef phoneID = ABMultiValueCopyValueAtIndex(phone, 0);
+    //phoneNumberTextField.text = [NSString stringWithFormat:@"%@", phoneID];
+    CFRelease(phoneID);
+    CFRelease(phone);
+    [self displayPerson:person];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
     return NO;
 }
+
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addContactFromPhoneContacts:(id)sender
+{
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
 
 -(void)addressBookValidation
 {
@@ -110,14 +146,14 @@
     CFRelease(addressbook);
 }
 
-- (BOOL)peoplePickerNavigationController:
+/*- (BOOL)peoplePickerNavigationController:
 (ABPeoplePickerNavigationController *)peoplePicker
       shouldContinueAfterSelectingPerson:(ABRecordRef)person
                                 property:(ABPropertyID)property
                               identifier:(ABMultiValueIdentifier)identifier
 {
     return NO;
-}
+}*/
 
 - (void)displayPerson:(ABRecordRef)person
 {
