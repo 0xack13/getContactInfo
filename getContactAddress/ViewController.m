@@ -37,7 +37,9 @@
     [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
     
-    [self presentModalViewController:picker animated:YES];
+    //[self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:nil];
+
 }
 
 - (void)peoplePickerNavigationControllerDidCancel:
@@ -63,7 +65,7 @@
     
     
     NSUserDefaults *prefs=[NSUserDefaults standardUserDefaults];
-    ABAddressBookRef addressbook = ABAddressBookCreate();
+    ABAddressBookRef addressbook = ABAddressBookCreateWithOptions(NULL, NULL);//ABAddressBookCreate();
     __block BOOL accessGranted = NO;
     
     if (ABAddressBookRequestAccessWithCompletion != NULL)
