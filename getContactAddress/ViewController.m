@@ -31,6 +31,7 @@
 
 - (IBAction)showPicker:(id)sender {
     NSLog(@"Button clicked!");
+    [self addressBookValidation ];
     
     ABPeoplePickerNavigationController *picker =
     [[ABPeoplePickerNavigationController alloc] init];
@@ -54,6 +55,57 @@
     [self dismissModalViewControllerAnimated:YES];
     
     return NO;
+}
+
+-(void)addressBookValidation
+{
+    
+    
+    
+    NSUserDefaults *prefs=[NSUserDefaults standardUserDefaults];
+    ABAddressBookRef addressbook = ABAddressBookCreate();
+    __block BOOL accessGranted = NO;
+    
+    if (ABAddressBookRequestAccessWithCompletion != NULL)
+    {
+        if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined)
+        {
+            dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+            ABAddressBookRequestAccessWithCompletion(addressbook, ^(bool granted, CFErrorRef error)
+                                                     {
+                                                         accessGranted = granted;
+                                                         dispatch_semaphore_signal(sema);
+                                                     });
+            dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+            //dispatch_release(sema);
+        }
+        else if(ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized)
+        {
+            accessGranted = YES;
+        }
+        else if (ABAddressBookGetAuthorizationStatus()==kABAuthorizationStatusDenied)
+        {
+            accessGranted = NO;
+        }
+        else if (ABAddressBookGetAuthorizationStatus()==kABAuthorizationStatusRestricted){
+            accessGranted = NO;
+        }
+        else
+        {
+            accessGranted = YES;
+        }
+        
+        
+    }
+    else
+    {
+        accessGranted = YES;
+    }
+    [prefs setBool:accessGranted forKey:@"addressBook"];
+    
+    NSLog(@"[prefs boolForKey:@'addressBook']--->%d",[prefs boolForKey:@"addressBook"]);
+    [prefs synchronize];
+    CFRelease(addressbook);
 }
 
 - (BOOL)peoplePickerNavigationController:
