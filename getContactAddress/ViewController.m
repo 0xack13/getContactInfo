@@ -170,6 +170,7 @@
     } else {
         phone = @"[None]";
     }
+    //Working on ios8  
     self.phoneNumber.text = phone;
     CFRelease(phoneNumbers);
 }
