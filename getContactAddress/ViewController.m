@@ -155,6 +155,7 @@
     return NO;
 }*/
 
+//Display method
 - (void)displayPerson:(ABRecordRef)person
 {
     NSString* name = (__bridge_transfer NSString*)ABRecordCopyValue(person,
