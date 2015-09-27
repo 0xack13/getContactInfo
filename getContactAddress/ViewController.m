@@ -39,6 +39,7 @@
     
     //[self presentModalViewController:picker animated:YES];
     [self presentViewController:picker animated:YES completion:nil];
+    NSLog(@"Picker closed!");
 
 }
 
